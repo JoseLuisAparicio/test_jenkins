@@ -10,7 +10,6 @@ node (){
 		try {
 			git url: 'https://github.com/pablotoledo/scala-maven.git'
 		} catch (err) {
-			sh "sh ${env.JENKINS_HOME}/scripts/updateIssue.sh Donwload_Sources ${TASK}"
 			sh "exit -1"
 		}
 	}
