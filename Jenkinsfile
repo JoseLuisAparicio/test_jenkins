@@ -27,6 +27,17 @@ node (){
 		}
 	}
 
+    	stage ("UnitTest Source") {
+		try{
+			withEnv(["JAVA_HOME=${JAVA_HOME}"]) {
+				sh "echo ${JAVA_HOME}"
+				sh "${MAVEN_HOME}/bin/mvn clean test"
+			}
+		} catch (err) {
+			sh "exit -1"
+		}
+	}
+
 	
 
 }
