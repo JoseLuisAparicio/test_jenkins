@@ -30,7 +30,6 @@
                 <version>${scoverage.plugin.version}</version>
                 <configuration>
                     <scalaVersion>2.10</scalaVersion>
-                    <-- other parameters -->
                 </configuration>
             </plugin>
             <plugin>
