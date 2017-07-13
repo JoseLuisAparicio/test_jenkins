@@ -11,6 +11,7 @@ node (){
 			withEnv(["JAVA_HOME=${JAVA_HOME}"]) {
 				sh "echo ${JAVA_HOME}"
                 sh "env"
+                sh "ls -la"
 				sh "${MAVEN_HOME}/bin/mvn clean compile"
 			}
 		} catch (err) {
