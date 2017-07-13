@@ -2,10 +2,13 @@
 
 <!--
 Copyright 2014-2017 Grzegorz Slowikowski (gslowikowski at gmail dot com)
+
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
+
   http://www.apache.org/licenses/LICENSE-2.0
+
 Unless required by applicable law or agreed to in writing,
 software distributed under the License is distributed on an
 "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -54,18 +57,6 @@ under the License.
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-  <groupId>org.scalactic</groupId>
-  <artifactId>scalactic_2.11</artifactId>
-  <version>3.0.1</version>
-</dependency>
-<dependency>
-  <groupId>org.scalatest</groupId>
-  <artifactId>scalatest_2.11</artifactId>
-  <version>3.0.1</version>
-  <scope>test</scope>
-</dependency>
     </dependencies>
 
     <build>
