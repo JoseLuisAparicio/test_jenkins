@@ -38,6 +38,17 @@ node (){
 		}
 	}
 
+    stage ("CoverageTest Source") {
+		try{
+			withEnv(["JAVA_HOME=${JAVA_HOME}"]) {
+				sh "echo ${JAVA_HOME}"
+				sh "${MAVEN_HOME}/bin/mvn scoverage"
+			}
+		} catch (err) {
+			sh "exit -1"
+		}
+	}
+
 	
 
 }
