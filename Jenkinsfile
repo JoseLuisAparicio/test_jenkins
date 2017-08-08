@@ -53,7 +53,7 @@ node (){
 		try{
 			withEnv(["JAVA_HOME=${JAVA_HOME}"]) {
 				sh "echo ${JAVA_HOME}"
-				sh "mvn deploy"
+				sh "${MAVEN_HOME}/bin/mvn deploy"
 			}
 		} catch (err) {
 			sh "exit -1"
