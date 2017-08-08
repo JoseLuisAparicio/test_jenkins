@@ -54,10 +54,7 @@ node (){
 			withEnv(["JAVA_HOME=${JAVA_HOME}"]) {
 				sh "echo ${MAVEN}"
 				sh "echo ${JAVA_HOME}"
-				sh "GROUP_ID=`echo -e 'setns x=http://maven.apache.org/POM/4.0.0\ncat /x:project/x:groupId/text()' | xmllint --shell pom.xml | grep -v /`"
-				sh "ARTIFACT_ID=`echo -e 'setns x=http://maven.apache.org/POM/4.0.0\ncat /x:project/x:artifactId/text()' | xmllint --shell pom.xml | grep -v /`"
-				sh "VERSION=`echo -e 'setns x=http://maven.apache.org/POM/4.0.0\ncat /x:project/x:version/text()' | xmllint --shell pom.xml | grep -v /`"
-				sh "mvn deploy:deploy-file -Durl=http://172.17.0.5:8081/nexus/content/repositories/snapshots -Dfile=target/${ARTIFACT_ID}-${VERSION}.jar -Dpackaging=jar -DgroupId=$GROUP_ID -DartifactId=$ARTIFACT_ID -Dversion=$VERSION -DrepositoryId=snapshots"
+				sh "mvn deploy"
 			}
 		} catch (err) {
 			sh "exit -1"
