@@ -52,7 +52,6 @@ node (){
 	stage ("Publish Artifact Nexus") {
 		try{
 			withEnv(["JAVA_HOME=${JAVA_HOME}"]) {
-				sh "echo ${MAVEN}"
 				sh "echo ${JAVA_HOME}"
 				sh "mvn deploy"
 			}
