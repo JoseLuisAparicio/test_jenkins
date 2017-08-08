@@ -1,7 +1,6 @@
 TASK='1'
 
 node (){
-	def MAVEN_HOME = tool 'MAVEN'
 	def JAVA_HOME = tool 'JDK8'
 
 	properties([pipelineTriggers([pollSCM('* * * * *')])])
@@ -20,7 +19,7 @@ node (){
 				sh "echo ${JAVA_HOME}"
                 sh "env"
                 sh "ls -la"
-				sh "${MAVEN_HOME}/bin/mvn clean compile package"
+				sh "mvn clean compile package"
 			}
 		} catch (err) {
 			sh "exit -1"
@@ -31,7 +30,7 @@ node (){
 		try{
 			withEnv(["JAVA_HOME=${JAVA_HOME}"]) {
 				sh "echo ${JAVA_HOME}"
-				sh "${MAVEN_HOME}/bin/mvn clean test"
+				sh "mvn clean test"
 			}
 		} catch (err) {
 			sh "exit -1"
@@ -42,7 +41,7 @@ node (){
 		try{
 			withEnv(["JAVA_HOME=${JAVA_HOME}"]) {
 				sh "echo ${JAVA_HOME}"
-				sh "${MAVEN_HOME}/bin/mvn scoverage:report"
+				sh "mvn scoverage:report"
 			}
 		} catch (err) {
 			sh "exit -1"
@@ -53,7 +52,7 @@ node (){
 		try{
 			withEnv(["JAVA_HOME=${JAVA_HOME}"]) {
 				sh "echo ${JAVA_HOME}"
-				sh "${MAVEN_HOME}/bin/mvn deploy"
+				sh "mvn deploy"
 			}
 		} catch (err) {
 			sh "exit -1"
