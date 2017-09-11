@@ -41,7 +41,7 @@ node (){
 		try{
 			withEnv(["JAVA_HOME=${JAVA_HOME}"]) {
 				sh "echo ${JAVA_HOME}"
-				sh "mvn scoverage:report"
+				sh "mvn scoverage:report sonar:sonar"
 			}
 		} catch (err) {
 			sh "exit -1"
