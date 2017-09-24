@@ -69,6 +69,20 @@ node() {
    sh "exit -1"
   }
  }
+	
+ stage("Remote Install") {
+  try {
+   withEnv(["JAVA_HOME=${JAVA_HOME}"]) {
+    sh "echo ${JAVA_HOME}"
+    // Tenemos dos maneras
+    //sh "wget http://NEXUS/ARTEFACTO.JAR; scp ARTEFACTO.JAR usuario@maquinaremota:/rutaremota"
+	   
+    //sh "scp target/*.jar usuario@maquinaremota:/rutaremota"
+   }
+  } catch (err) {
+   sh "exit -1"
+  }
+ }
 
 
 
