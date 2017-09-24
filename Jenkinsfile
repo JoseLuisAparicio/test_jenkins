@@ -13,6 +13,17 @@ node() {
   }
  }
 
+ stage("UnitTest Source") {
+  try {
+   withEnv(["JAVA_HOME=${JAVA_HOME}"]) {
+    sh "echo ${JAVA_HOME}"
+    sh "mvn clean test"
+   }
+  } catch (err) {
+   sh "exit -1"
+  }
+ }
+
  stage("Compile Source") {
   try {
    withEnv(["JAVA_HOME=${JAVA_HOME}"]) {
@@ -25,19 +36,8 @@ node() {
    sh "exit -1"
   }
  }
-
- stage("UnitTest Source") {
-  try {
-   withEnv(["JAVA_HOME=${JAVA_HOME}"]) {
-    sh "echo ${JAVA_HOME}"
-    sh "mvn clean test"
-   }
-  } catch (err) {
-   sh "exit -1"
-  }
- }
-
- stage("CoverageTest Source") {
+	
+ stage("Package") {
   try {
    withEnv(["JAVA_HOME=${JAVA_HOME}"]) {
     sh "echo ${JAVA_HOME}"
@@ -48,7 +48,7 @@ node() {
   }
  }
 	
- stage("Packager") {
+ stage("CoverageTest Source") {
   try {
    withEnv(["JAVA_HOME=${JAVA_HOME}"]) {
     sh "echo ${JAVA_HOME}"
