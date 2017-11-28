@@ -7,7 +7,7 @@ node() {
 
  stage("Donwload Sources") {
   try {
-   git url: 'https://github.com/pablotoledo/scala-maven.git'
+   git url: 'https://github.com/JoseLuisAparicio/test_jenkins.git'
   } catch (err) {
    sh "exit -1"
   }
