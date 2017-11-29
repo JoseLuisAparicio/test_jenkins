@@ -4,17 +4,6 @@ node() {
  def JAVA_HOME = tool 'JDK8'
 
  properties([pipelineTriggers([pollSCM('* * * * *')])])
-
- stage("UnitTest Source") {
-  try {
-   withEnv(["JAVA_HOME=${JAVA_HOME}"]) {
-    sh "echo ${JAVA_HOME}"
-    sh "mvn clean test"
-   }
-  } catch (err) {
-   sh "exit -1"
-  }
- }
 	
  stage("CoverageTest Source") {
   try {
