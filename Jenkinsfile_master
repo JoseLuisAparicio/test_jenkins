@@ -15,30 +15,6 @@ node() {
    sh "exit -1"
   }
  }
-
- stage("Compile Source") {
-  try {
-   withEnv(["JAVA_HOME=${JAVA_HOME}"]) {
-    sh "echo ${JAVA_HOME}"
-    sh "env"
-    sh "ls -la"
-    sh "mvn clean compile package"
-   }
-  } catch (err) {
-   sh "exit -1"
-  }
- }
-	
- stage("Package") {
-  try {
-   withEnv(["JAVA_HOME=${JAVA_HOME}"]) {
-    sh "echo ${JAVA_HOME}"
-    sh "mvn install"
-   }
-  } catch (err) {
-   sh "exit -1"
-  }
- }
 	
  stage("CoverageTest Source") {
   try {
