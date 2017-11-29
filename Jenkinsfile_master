@@ -5,14 +5,6 @@ node() {
 
  properties([pipelineTriggers([pollSCM('* * * * *')])])
 
- stage("Donwload Sources") {
-  try {
-   git url: 'https://github.com/JoseLuisAparicio/test_jenkins.git'
-  } catch (err) {
-   sh "exit -1"
-  }
- }
-
  stage("UnitTest Source") {
   try {
    withEnv(["JAVA_HOME=${JAVA_HOME}"]) {
@@ -58,32 +50,5 @@ node() {
    sh "exit -1"
   }
  }
-
- stage("Publish Artifact Nexus") {
-  try {
-   withEnv(["JAVA_HOME=${JAVA_HOME}"]) {
-    sh "echo ${JAVA_HOME}"
-    sh "mvn deploy"
-   }
-  } catch (err) {
-   sh "exit -1"
-  }
- }
-	
- stage("Remote Install") {
-  try {
-   withEnv(["JAVA_HOME=${JAVA_HOME}"]) {
-    sh "echo ${JAVA_HOME}"
-    // Tenemos dos maneras
-    //sh "wget http://NEXUS/ARTEFACTO.JAR; scp ARTEFACTO.JAR usuario@maquinaremota:/rutaremota"
-	   
-    //sh "scp target/*.jar usuario@maquinaremota:/rutaremota"
-   }
-  } catch (err) {
-   sh "exit -1"
-  }
- }
-
-
 
 }
